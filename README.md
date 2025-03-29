@@ -1,31 +1,50 @@
-# VAE Model
+# VAE & CVAE Models
 
 ## Introduction
 
-This project implements a **Variational Autoencoder (VAE)** for data generation using latent space representation. The model is trained on the MNIST dataset and runs on **Google Colab** for easy execution.
+This project implements two types of autoencoders for data generation:
+- **VAE (Variational Autoencoder)**: Trained on **MNIST** for image generation.
+- **CVAE (Conditional Variational Autoencoder)**: Trained on **audio data** for conditional generation.
 
-## About Variational Autoencoder (VAE)
-A **Variational Autoencoder (VAE)** is a type of generative model that learns to encode input data into a latent space and then reconstructs it. Unlike traditional autoencoders, VAEs introduce a probabilistic approach to latent space representation, making them effective for generating new data.
+Both models run on **Google Colab** for easy execution.
 
-### Key Concepts:
-- **Encoder**: Maps input data to a probability distribution in the latent space.
-- **Latent Space**: A lower-dimensional representation from which data can be sampled.
+## What is a VAE?
+A **Variational Autoencoder (VAE)** is a generative model that learns to encode input data into a **latent space** and then reconstruct it. Unlike regular autoencoders, VAEs introduce a probabilistic approach, allowing them to generate new data.
+
+### How VAE Works:
+- **Encoder**: Converts input data into a probability distribution.
+- **Latent Space**: A compressed representation used for sampling.
 - **Decoder**: Reconstructs data from the latent representation.
-- **Reparameterization Trick**: Ensures differentiability during training by expressing stochastic variables in a differentiable way.
-- **Loss Function**: Combines **Reconstruction Loss** (to minimize reconstruction error) and **KL Divergence** (to ensure smoothness in latent space distribution).
+- **Reparameterization Trick**: Helps smooth learning of the latent variables.
+- **Loss Function**: Combines **Reconstruction Loss** (for accuracy) and **KL Divergence** (for a smooth latent space).
+
+## What is a CVAE?
+A **Conditional Variational Autoencoder (CVAE)** is an extension of VAE that includes **conditional labels** as extra inputs. This allows for more controlled generation of data.
+
+### How CVAE Works:
+- **Conditional Inputs**: Labels are used to guide the generation process.
+- **Encoder**: Maps input + label to a probability distribution in latent space.
+- **Latent Space**: Learns meaningful representations based on conditions.
+- **Decoder**: Reconstructs data using the latent vector and condition.
+- **Reparameterization Trick**: Ensures smooth learning.
+- **Loss Function**: Balances **Reconstruction Loss** and **KL Divergence** for structured generation.
+- **Targeted Generation**: Generates specific outputs based on conditions.
 
 ## Features
-- **Train a VAE model** on image datasets.
-- **Generate new data** by sampling from the latent space.
-- **Visualize results** to assess the model's reconstruction quality.
+- Train **VAE** on the MNIST dataset for image generation.
+- Train **CVAE** on an audio dataset for **conditional** audio generation.
+- Generate new data by sampling from the latent space.
+- Visualize and evaluate reconstruction quality.
 
 ## How to Use
 1. **Open Google Colab**
 2. **Upload the notebook** or run it directly from the repository.
-3. **Execute all cells** in order to:
-   - Install required dependencies.
-   - Download the dataset and prepare it for training.
-   - Train the model and visualize results.
+3. **Run all cells** to:
+   - Install dependencies.
+   - Download and prepare the dataset.
+   - Train the model and view results.
 
 ## Results
-The model will generate images from the latent space and reconstruct input images, demonstrating VAE's ability to learn representations and generate new data.
+- **VAE (MNIST)**: Generates new handwritten digits.
+- **CVAE (Audio)**: Generates audio samples based on given conditions.
+
